@@ -6,7 +6,7 @@ provider "aws" {
 resource "aws_instance" "test1" {
     ami = "ami-0182f373e66f89c85"
     instance_type = "t2.micro"
-    key_name = key1
+    key_name = "key1"
     vpc_security_group_ids = [ aws_security_group.SG-2.id ]
 
 connection {
