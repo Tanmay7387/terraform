@@ -6,13 +6,13 @@ provider "aws" {
 resource "aws_instance" "test1" {
     ami = "ami-0182f373e66f89c85"
     instance_type = "t2.micro"
-    key_name = "key1"
+    key_name = var.key_name
     vpc_security_group_ids = [ aws_security_group.SG-2.id ]
 
 connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file ("./key1.pem")
+    private_key = file (var.private_key_path)
     host     = self.public_ip
   }
 
