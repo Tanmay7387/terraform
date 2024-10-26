@@ -8,11 +8,6 @@ resource "aws_instance" "test1" {
     instance_type = "t2.micro"
     key_name = key1
     vpc_security_group_ids = [ aws_security_group.SG-2.id ]
-  
-}
-
-resource "aws_security_group" "SG-2" {
-    name = "terra_security"
 
 connection {
     type     = "ssh"
@@ -28,6 +23,10 @@ provisioner "remote-exec" {
       "mkdir /home/ec2-user/testo",
     ]
   }
+}
+
+resource "aws_security_group" "SG-2" {
+    name = "terra_security"
 }
 
 resource "aws_vpc_security_group_ingress_rule" "SG-1_ipv4" {
