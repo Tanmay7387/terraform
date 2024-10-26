@@ -31,7 +31,7 @@ provisioner "remote-exec" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "SG-1_ipv4" {
-  security_group_id = aws_security_group.SG-1.id
+  security_group_id = aws_security_group.SG-2.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 22
   ip_protocol       = "tcp"
@@ -40,7 +40,7 @@ resource "aws_vpc_security_group_ingress_rule" "SG-1_ipv4" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "SG-2_ipv4" {
-  security_group_id = aws_security_group.SG-1.id
+  security_group_id = aws_security_group.SG-2.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 80
   ip_protocol       = "tcp"
@@ -49,7 +49,7 @@ resource "aws_vpc_security_group_ingress_rule" "SG-2_ipv4" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
-  security_group_id = aws_security_group.SG-1.id
+  security_group_id = aws_security_group.SG-2.id
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "-1" 
 }
